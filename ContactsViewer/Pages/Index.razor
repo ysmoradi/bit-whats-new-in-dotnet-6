@@ -1,0 +1,20 @@
+﻿@page "/"
+
+<h1>Contacts viewer</h1>
+
+@if (Contacts == null)
+{
+    <h2>Loading...</h2>
+}
+else
+{
+    <h2>People count: @Contacts.Count</h2>
+
+    <BitBasicList Items="Contacts" Virtualize="true">
+        <RowTemplate Context="contact">
+            <div>
+                <BitButton>@contact.DisplayName</BitButton>
+            </div>
+        </RowTemplate>
+    </BitBasicList>
+}
