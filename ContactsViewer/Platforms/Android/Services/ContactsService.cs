@@ -22,15 +22,14 @@ public class ContactsService
             ContactsContract.Contacts.ContentUri,
             new[]
             {
-                        ContactsContract.Contacts.InterfaceConsts.Id,
-                        ContactsContract.Contacts.InterfaceConsts.DisplayName,
-                        ContactsContract.Contacts.InterfaceConsts.HasPhoneNumber,
-                        ContactsContract.Contacts.InterfaceConsts.PhotoUri
+                ContactsContract.Contacts.InterfaceConsts.Id,
+                ContactsContract.Contacts.InterfaceConsts.DisplayName,
+                ContactsContract.Contacts.InterfaceConsts.HasPhoneNumber,
+                ContactsContract.Contacts.InterfaceConsts.PhotoUri
             },
             null,
             null,
-            ContactsContract.Contacts.InterfaceConsts.DisplayName
-        );
+            ContactsContract.Contacts.InterfaceConsts.DisplayName);
 
             List<ContactInfo> contacts = new();
 
@@ -56,10 +55,7 @@ public class ContactsService
                             await using var sourceStream = MauiApplication.Current.ContentResolver.OpenInputStream(Android.Net.Uri.Parse(contactImagePath));
                             contact.Image = await sourceStream.ConvertToBase64Image();
                         }
-                        catch (Java.IO.FileNotFoundException)
-                        {
-
-                        }
+                        catch (Java.IO.FileNotFoundException) { }
                     }
 
                     using ICursor numbers = MauiApplication.Current.ContentResolver.Query(Phone.ContentUri, new string[] { Phone.Number, Phone.InterfaceConsts.Type }, $"{Phone.InterfaceConsts.ContactId} = {contact.Id}", null, null);
