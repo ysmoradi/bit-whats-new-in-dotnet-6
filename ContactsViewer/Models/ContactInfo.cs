@@ -6,7 +6,5 @@ public class ContactInfo
 
     public string DisplayName { get; set; }
 
-    public List<ContactPhoneNumber> Numbers { get; set; } = new();
-
     public string Image { get; set; }
 }

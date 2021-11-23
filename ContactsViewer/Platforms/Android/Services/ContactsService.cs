@@ -1,6 +1,5 @@
 ﻿using Android.Database;
 using Android.Provider;
-using static Android.Provider.ContactsContract.CommonDataKinds;
 
 namespace ContactsViewer.Services;
 
@@ -48,35 +47,9 @@ public class ContactsService
                         try
                         {
                             await using var sourceStream = MauiApplication.Current.ContentResolver.OpenInputStream(Android.Net.Uri.Parse(contactImagePath));
-                            contact.Image = await sourceStream.ConvertToBase64Image();
+                            contact.Image = await ConvertToBase64Image(sourceStream);
                         }
                         catch (Java.IO.FileNotFoundException) { }
-                    }
-
-                    using ICursor numbers = MauiApplication.Current.ContentResolver.Query(Phone.ContentUri, new string[] { Phone.Number, Phone.InterfaceConsts.Type }, $"{Phone.InterfaceConsts.ContactId} = {contact.Id}", null, null);
-
-                    while (numbers.MoveToNext())
-                    {
-                        string number = numbers.GetString(0);
-                        int type = numbers.GetInt(1);
-                        bool isMobile = type == 2;
-
-                        contact.Numbers.Add(new()
-                        {
-                            ContactId = contact.Id,
-                            Number = number,
-                            Type = isMobile ? "📱" : "🏡"
-                        });
-
-                        if (isMobile)
-                        {
-                            contact.Numbers.Add(new()
-                            {
-                                ContactId = contact.Id,
-                                Number = number,
-                                Type = "📷"
-                            });
-                        }
                     }
 
                     contacts.Add(contact);
@@ -91,5 +64,20 @@ public class ContactsService
 
             return contacts;
         });
+    }
+
+    async Task<string> ConvertToBase64Image(Stream stream)
+    {
+        byte[] bytes;
+
+        await using (MemoryStream memoryStream = new())
+        {
+            await stream.CopyToAsync(memoryStream);
+            bytes = memoryStream.ToArray();
+        }
+
+        string base64 = Convert.ToBase64String(bytes);
+
+        return $"data:image/jpg;base64, {base64}";
     }
 }
