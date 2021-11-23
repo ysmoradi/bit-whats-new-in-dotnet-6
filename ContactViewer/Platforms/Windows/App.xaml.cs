@@ -16,6 +16,6 @@ public partial class App
     {
         base.OnLaunched(args);
 
-        Microsoft.Maui.Essentials.Platform.OnLaunched(args);
+        Platform.OnLaunched(args);
     }
 }

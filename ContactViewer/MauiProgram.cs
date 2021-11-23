@@ -17,6 +17,7 @@ public static class MauiProgram
         var services = builder.Services;
 
         services.AddBlazorWebView();
+        services.AddSingleton<ContactsService>();
 
         return builder.Build();
     }

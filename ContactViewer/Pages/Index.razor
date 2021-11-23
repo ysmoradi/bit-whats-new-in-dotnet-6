@@ -1,3 +1,15 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+<h1>Contact viewer</h1>
+
+@if (ContactPeople == null)
+{
+    <h2>Loading...</h2>
+}
+else
+{
+    @foreach (var contact in ContactPeople)
+    {
+        <div>@contact.DisplayName</div>
+    }
+}
