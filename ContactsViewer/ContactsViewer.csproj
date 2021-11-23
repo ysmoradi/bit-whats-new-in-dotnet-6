@@ -54,11 +54,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Bit.Client.Web.BlazorUI" Version="8.5.2" />
 		<Content Remove="Properties\launchSettings.json" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <PackageReference Include="Bit.Client.Web.BlazorUI" Version="8.5.2" />
-	</ItemGroup>
+	<PropertyGroup Condition="$(TargetFramework.Contains('-android'))">
+		<AndroidLinkMode Condition="'$(Configuration)' == 'Release'">None</AndroidLinkMode>
+		<RuntimeIdentifiers Condition="'$(Configuration)' == 'Release'">android-arm64</RuntimeIdentifiers>
+	</PropertyGroup>
 
 </Project>
