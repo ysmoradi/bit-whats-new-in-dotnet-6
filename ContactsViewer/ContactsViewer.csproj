@@ -60,5 +60,5 @@
 	<ItemGroup>
 	  <PackageReference Include="Bit.Client.Web.BlazorUI" Version="8.5.2" />
 	</ItemGroup>
-	
+
 </Project>

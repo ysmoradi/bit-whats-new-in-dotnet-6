@@ -1,5 +1,4 @@
 ﻿using Microsoft.UI.Xaml;
-using Windows.ApplicationModel;
 
 namespace ContactsViewer.Platforms.Windows;
 
@@ -10,7 +9,7 @@ public partial class App
         InitializeComponent();
     }
 
-    protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+    protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiAppBuilder().Build();
 
     protected override void OnLaunched(LaunchActivatedEventArgs args)
     {

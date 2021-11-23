@@ -8,5 +8,5 @@ public class ContactInfo
 
     public List<ContactPhoneNumber> Numbers { get; set; } = new();
 
-    public string ImagePath { get; set; }
+    public string Image { get; set; }
 }

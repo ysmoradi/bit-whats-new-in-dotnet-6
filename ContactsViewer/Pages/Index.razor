@@ -14,7 +14,11 @@ else
         <RowTemplate Context="contact">
             <div>
                 <BitButton>@contact.DisplayName</BitButton>
-            </div>
-        </RowTemplate>
-    </BitBasicList>
+                @if (contact.Image is not null)
+                {
+                    <img src=@contact.Image />
+                }
+        </div>
+    </RowTemplate>
+</BitBasicList>
 }

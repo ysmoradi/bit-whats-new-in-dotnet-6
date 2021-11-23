@@ -2,7 +2,7 @@
 
 public static class MauiProgram
 {
-    public static MauiApp CreateMauiApp()
+    public static MauiAppBuilder CreateMauiAppBuilder()
     {
         var builder = MauiApp.CreateBuilder();
 
@@ -19,6 +19,6 @@ public static class MauiProgram
         services.AddBlazorWebView();
         services.AddSingleton<ContactsService>();
 
-        return builder.Build();
+        return builder;
     }
 }
