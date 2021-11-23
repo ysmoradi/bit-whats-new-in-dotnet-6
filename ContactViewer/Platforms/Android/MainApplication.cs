@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace ContactViewer;
+namespace ContactViewer.Platforms.Android;
 
 [Application]
 public class MainApplication : MauiApplication

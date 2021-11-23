@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml;
 using Windows.ApplicationModel;
 
-namespace ContactViewer.WinUI;
+namespace ContactViewer.Platforms.Windows;
 
 public partial class App
 {

@@ -1,6 +1,6 @@
 ﻿using UIKit;
 
-namespace ContactViewer;
+namespace ContactViewer.Platforms.MacCatalyst;
 
 public class Program
 {

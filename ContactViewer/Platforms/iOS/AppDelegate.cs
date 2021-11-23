@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace ContactViewer;
+namespace ContactViewer.Platforms.iOS;
 
 [Register(nameof(AppDelegate))]
 public class AppDelegate : MauiUIApplicationDelegate
