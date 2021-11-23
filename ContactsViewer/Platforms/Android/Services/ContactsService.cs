@@ -1,7 +1,5 @@
-﻿using Android.App;
-using Android.Database;
+﻿using Android.Database;
 using Android.Provider;
-using System.IO;
 using static Android.Provider.ContactsContract.CommonDataKinds;
 
 namespace ContactsViewer.Services;
@@ -12,9 +10,6 @@ public class ContactsService
     {
         if (await Permissions.CheckStatusAsync<Permissions.ContactsRead>() != PermissionStatus.Granted)
             await Permissions.RequestAsync<Permissions.ContactsRead>();
-
-        if (await Permissions.CheckStatusAsync<Permissions.StorageRead>() != PermissionStatus.Granted)
-            await Permissions.RequestAsync<Permissions.StorageRead>();
 
         return await Task.Run(async () =>
         {

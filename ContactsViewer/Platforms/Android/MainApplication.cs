@@ -3,8 +3,6 @@ using Android.Runtime;
 using ContactsViewer.Platforms.Android.Handlers;
 
 [assembly: UsesPermission(Android.Manifest.Permission.ReadContacts)]
-[assembly: UsesPermission(Android.Manifest.Permission.ReadExternalStorage)]
-[assembly: UsesPermission(Android.Manifest.Permission.WriteExternalStorage)]
 
 namespace ContactsViewer.Platforms.Android;
 
