@@ -4,6 +4,11 @@ using ContactsViewer.Platforms.Android.Handlers;
 
 [assembly: UsesPermission(Android.Manifest.Permission.ReadContacts)]
 
+#if DEBUG
+[assembly: UsesPermission(Android.Manifest.Permission.Internet)]
+[assembly: UsesPermission(Android.Manifest.Permission.AccessNetworkState)]
+#endif
+
 namespace ContactsViewer.Platforms.Android;
 
 [Application]
@@ -21,7 +26,7 @@ public class MainApplication : MauiApplication
             var descriptorToRemove = handlers.FirstOrDefault(d => d.ServiceType == typeof(IBlazorWebView));
             handlers.Remove(descriptorToRemove);
 
-            handlers.AddHandler<IBlazorWebView, CustomFilesBlazorWebViewHandler>();
+            handlers.AddHandler<IBlazorWebView, CustomBlazorWebViewHandler>();
         })
         .Build();
 }

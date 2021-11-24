@@ -2,6 +2,8 @@
 
 <h1>Contacts viewer</h1>
 
+<BitButton OnClick="@Reload">Reload!</BitButton>
+
 @if (Contacts == null)
 {
     <h2>Loading...</h2>
@@ -18,7 +20,7 @@ else
                 {
                     <img src=@contact.Image />
                 }
-        </div>
-    </RowTemplate>
-</BitBasicList>
+            </div>
+        </RowTemplate>
+    </BitBasicList>
 }
