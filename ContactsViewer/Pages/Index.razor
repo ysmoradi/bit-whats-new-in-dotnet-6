@@ -1,25 +1,32 @@
 ﻿@page "/"
 
-<h1>Contacts viewer</h1>
-
-<BitButton OnClick="@Reload">Reload!</BitButton>
+<div class="top-bar">
+    Contacts viewer
+    <BitIconButton IconName="Refresh" OnClick="@Reload" />
+</div>
 
 @if (Contacts == null)
 {
-    <h2>Loading...</h2>
+    <div class="loading-container">
+        <BitSpinner Size="BitSpinnerSize.Large" />
+    </div>
 }
 else
 {
-    <h2>People count: @Contacts.Count</h2>
-
-    <BitBasicList Items="Contacts" Virtualize="true">
+    <BitBasicList Items="Contacts" Virtualize="true" Style="height: calc(100% - 60px);">
         <RowTemplate Context="contact">
-            <div>
-                <BitButton>@contact.DisplayName</BitButton>
-                @if (contact.Image is not null)
-                {
-                    <img src=@contact.Image />
-                }
+            <div class="contact-row">
+                <div class="contact-photo-container">
+                    @if (contact.Image is null)
+                    {
+                        @contact.DisplayName?.Substring(0, 1)
+                    }
+                    else
+                    {
+                        <img src="@contact.Image" class="contact-photo" />
+                    }
+                </div>
+                <div class="contact-name">@contact.DisplayName</div>
             </div>
         </RowTemplate>
     </BitBasicList>

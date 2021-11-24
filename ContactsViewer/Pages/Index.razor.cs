@@ -5,13 +5,15 @@ public partial class Index
     [Inject] public ContactsService ContactsService { get; set; }
     public List<ContactInfo> Contacts { get; set; }
 
-    public async Task Reload()
+    public void Reload()
     {
-        Contacts = await ContactsService.GetContacts();
+        StateHasChanged(); // to perform hot reload in blazor hybrid. It's not required in blazor wasm, server modes.
     }
 
     protected async override Task OnInitializedAsync()
     {
+        await Task.Delay(TimeSpan.FromSeconds(2));
+
         Contacts = await ContactsService.GetContacts();
 
         await base.OnInitializedAsync();

@@ -7,6 +7,13 @@ public class ContactsService
         if (await Permissions.CheckStatusAsync<Permissions.ContactsRead>() != PermissionStatus.Granted)
             await Permissions.RequestAsync<Permissions.ContactsRead>();
 
-        throw new NotImplementedException();
+        List<ContactInfo> result = new();
+
+        for (int i = 0; i < 100; i++)
+        {
+            result.Add(new() { DisplayName = $"Test Contact {i}" });
+        }
+
+        return result;
     }
 }
