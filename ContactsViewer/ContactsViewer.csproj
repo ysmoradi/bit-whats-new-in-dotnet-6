@@ -41,6 +41,8 @@
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
+
+		<LinkDescription Include="Linker.xml" />
 	</ItemGroup>
 
 	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
@@ -66,7 +68,7 @@
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-android'))">
-		<AndroidLinkMode Condition="'$(Configuration)' == 'Release'">None</AndroidLinkMode>
+		<AndroidLinkMode Condition="'$(Configuration)' == 'Release'">Full</AndroidLinkMode>
 		<RuntimeIdentifiers Condition="'$(Configuration)' == 'Release'">android-arm64</RuntimeIdentifiers>
 	</PropertyGroup>
 

@@ -12,7 +12,9 @@ public partial class Index
 
     protected async override Task OnInitializedAsync()
     {
+#if DEBUG
         await Task.Delay(TimeSpan.FromSeconds(2));
+#endif
 
         Contacts = await ContactsService.GetContacts();
 
