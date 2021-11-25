@@ -362,5 +362,9 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-/ContactsViewer/wwwroot/styles/*.css
-/ContactsViewer/Pages/**/*.css
+/ContactsViewer/**/*.css
+/ContactsViewer/ContactsViewer/App/Extensions
+/ContactsViewer/ContactsViewer/App/Pages
+/ContactsViewer/ContactsViewer/App/wwwroot/styles
+/ContactsViewer/ContactsViewer/App/Contracts
+/ContactsViewer/ContactsViewer/App/Implementations
