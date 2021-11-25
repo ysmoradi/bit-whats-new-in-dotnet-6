@@ -1,6 +1,6 @@
 {
     "profiles": {
-        "ContactsViewer.App": {
+        "ContactsViewer.Web": {
             "commandName": "Project",
             "launchBrowser": true,
             "environmentVariables": {
