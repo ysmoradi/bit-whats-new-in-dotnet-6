@@ -92,4 +92,8 @@
 	  <ProjectReference Include="..\Shared\ContactsViewer.Shared.csproj" />
 	</ItemGroup>
 
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+		<Exec Command="call $(ProjectDir)mklink.bat" />
+	</Target>
+
 </Project>
