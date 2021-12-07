@@ -7,7 +7,9 @@ public class ContactsService : IContactsService
         if (await Permissions.CheckStatusAsync<Permissions.ContactsRead>() != PermissionStatus.Granted)
             await Permissions.RequestAsync<Permissions.ContactsRead>();
 
-        List<ContactInfo> result = new();
+        List<ContactInfo> result = new(); 
+        // get contacts from iOS
+        // here you've access to all iOS features
 
         for (int i = 0; i < 100; i++)
         {

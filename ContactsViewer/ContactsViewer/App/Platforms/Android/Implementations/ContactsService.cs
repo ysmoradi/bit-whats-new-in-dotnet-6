@@ -36,7 +36,7 @@ public class ContactsService : IContactsService
 
                     ContactInfo contact = new()
                     {
-                        Id = contactDetailCursor.GetInt(0),
+                        Id = contactDetailCursor.GetString(0),
                         DisplayName = contactDetailCursor.GetString(1)
                     };
 
