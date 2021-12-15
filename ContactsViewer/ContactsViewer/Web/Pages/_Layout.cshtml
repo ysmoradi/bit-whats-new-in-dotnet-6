@@ -26,12 +26,14 @@
     <link href="styles/app.css" rel="stylesheet" asp-append-version="true" />
     <link href="ContactsViewer.App.styles.css" rel="stylesheet" asp-append-version="true" />
     <component type="typeof(HeadOutlet)" render-mode="@(isBlazorServer ? RenderMode.ServerPrerendered : RenderMode.Static)" />
+    <link rel="stylesheet" href="styles.css" asp-append-version="true" />
 </head>
 <body>
 
     @RenderBody()
 
     <script src="_content/Bit.Client.Web.BlazorUI/scripts/bit.blazorui.min.js" asp-append-version="true"></script>
+    <script src="_content/Microsoft.AspNetCore.Components.CustomElements/BlazorCustomElements.js" asp-append-version="true"></script>
 
     @if (isBlazorServer)
     {
@@ -41,5 +43,9 @@
     {
         <script src="_framework/blazor.webassembly.js" asp-append-version="true"></script>
     }
+
+    <script src="runtime.js" type="module" asp-append-version="true"></script>
+    <script src="polyfills.js" type="module" asp-append-version="true"></script>
+    <script src="main.js" type="module" asp-append-version="true"></script>
 </body>
 </html>

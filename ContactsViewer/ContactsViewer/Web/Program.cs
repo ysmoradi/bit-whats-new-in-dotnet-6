@@ -24,19 +24,19 @@ public class Program
     }
 
 #if BlazorWebAssembly
-        public static WebAssemblyHostBuilder CreateHostBuilder(string[] args)
-        {
-            var builder = WebAssemblyHostBuilder.CreateDefault();
+    public static WebAssemblyHostBuilder CreateHostBuilder(string[] args)
+    {
+        var builder = WebAssemblyHostBuilder.CreateDefault();
 
-            builder.RootComponents.Add<App>("app");
-            builder.RootComponents.Add<HeadOutlet>("head::after");
+        builder.RootComponents.Add<HeadOutlet>("head::after");
+        builder.RootComponents.RegisterCustomElements();
 
-            builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+        builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-            new Startup().ConfigureServices(builder.Services);
+        new Startup().ConfigureServices(builder.Services);
 
-            return builder;
-        }
+        return builder;
+    }
 #elif BlazorServer
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)

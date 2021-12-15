@@ -368,3 +368,6 @@ FodyWeavers.xsd
 /ContactsViewer/ContactsViewer/App/wwwroot/styles
 /ContactsViewer/ContactsViewer/App/Contracts
 /ContactsViewer/ContactsViewer/App/Implementations
+/ContactsViewer/ContactsViewer/Web/wwwroot/runtime.js
+/ContactsViewer/ContactsViewer/Web/wwwroot/polyfills.js
+/ContactsViewer/ContactsViewer/Web/wwwroot/main.js

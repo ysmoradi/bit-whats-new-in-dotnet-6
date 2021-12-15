@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 #endif
 using System.IO.Compression;
 using System.Net.Http;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace ContactsViewer.App;
 public class Startup
@@ -22,7 +23,10 @@ public class Startup
         });
         services.AddTransient(c => c.GetRequiredService<IHttpClientFactory>().CreateClient("ApiHttpClient"));
         services.AddRazorPages();
-        services.AddServerSideBlazor();
+        services.AddServerSideBlazor(options =>
+        {
+            options.RootComponents.RegisterCustomElements();
+        });
         services.AddResponseCompression(opts =>
         {
             opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { "application/octet-stream" });
