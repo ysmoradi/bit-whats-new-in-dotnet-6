@@ -80,6 +80,7 @@
 		<Content Remove="appsettings.json" />
 		<EmbeddedResource Include="appsettings.json" />
 		<Content Remove="Pages\_Host.cshtml" />
+		<Content Remove="Pages\_Layout.cshtml" />
 		<Content Remove="Properties\launchSettings.json" />
 	</ItemGroup>
 
