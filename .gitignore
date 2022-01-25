@@ -368,3 +368,8 @@ FodyWeavers.xsd
 /ContactsViewer/ContactsViewer/App/wwwroot/styles
 /ContactsViewer/ContactsViewer/App/Contracts
 /ContactsViewer/ContactsViewer/App/Implementations
+/ContactsViewer/ContactsViewer/App/_Imports.razor
+/ContactsViewer/ContactsViewer/App/Main.razor
+/ContactsViewer/ContactsViewer/App/compilerconfig.json.defaults
+/ContactsViewer/ContactsViewer/App/compilerconfig.json
+/ContactsViewer/ContactsViewer/App/appsettings.json
