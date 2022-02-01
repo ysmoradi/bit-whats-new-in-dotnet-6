@@ -1,6 +1,5 @@
 ﻿using Android.App;
 using Android.Runtime;
-using ContactsViewer.App.Platforms.Android.Handlers;
 
 [assembly: UsesPermission(Android.Manifest.Permission.ReadContacts)]
 
@@ -21,12 +20,5 @@ public class MainApplication : MauiApplication
 
     protected override MauiApp CreateMauiApp() => MauiProgram
         .CreateMauiAppBuilder()
-        .ConfigureMauiHandlers(delegate (IMauiHandlersCollection handlers)
-        {
-            var descriptorToRemove = handlers.FirstOrDefault(d => d.ServiceType == typeof(IBlazorWebView));
-            handlers.Remove(descriptorToRemove);
-
-            handlers.AddHandler<IBlazorWebView, CustomBlazorWebViewHandler>();
-        })
         .Build();
 }

@@ -42,15 +42,8 @@ public class ContactsService : IContactsService
 
                     string contactImagePath = contactDetailCursor.GetString(3);
 
-                    if (contactImagePath != null)
-                    {
-                        try
-                        {
-                            await using var sourceStream = MauiApplication.Current.ContentResolver.OpenInputStream(global::Android.Net.Uri.Parse(contactImagePath));
-                            contact.Image = await ConvertToBase64Image(sourceStream);
-                        }
-                        catch (Java.IO.FileNotFoundException) { }
-                    }
+                    if (contactImagePath is not null)
+                        contact.Image = $"{contactImagePath.Replace("content://com.android.contacts/display_photo/", string.Empty)}.contact"; // ContactsViewFileProvider
 
                     contacts.Add(contact);
 
