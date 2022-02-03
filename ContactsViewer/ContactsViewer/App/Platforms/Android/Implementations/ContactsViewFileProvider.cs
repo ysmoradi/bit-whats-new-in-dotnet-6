@@ -23,7 +23,9 @@ public class ContactsViewFileProvider : IFileProvider
     {
         if (subpath.EndsWith(".contact"))
         {
-            subpath = $"content://com.android.contacts/display_photo/{subpath.Replace(".contact", string.Empty)}";
+            string contactId = subpath.Replace(".contact", string.Empty);
+
+            subpath = ContactsService.ContactPhotos[contactId];
 
             return new ContactFileInfo(subpath);
         }
@@ -50,11 +52,11 @@ public class ContactFileInfo : IFileInfo
 
     public long Length => 0;
 
-    public string PhysicalPath => "contact.png";
+    public string PhysicalPath => null;
 
-    public string Name => "contact.png";
+    public string Name => null;
 
-    public DateTimeOffset LastModified => DateTimeOffset.UtcNow;
+    public DateTimeOffset LastModified => DateTimeOffset.FromUnixTimeSeconds(0);
 
     public bool IsDirectory => false;
 

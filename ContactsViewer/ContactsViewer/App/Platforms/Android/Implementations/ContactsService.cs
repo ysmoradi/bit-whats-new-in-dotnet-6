@@ -1,10 +1,13 @@
 ﻿using Android.Database;
 using Android.Provider;
+using System.Collections.Concurrent;
 
 namespace ContactsViewer.App.Platforms.Android.Implementations;
 
 public class ContactsService : IContactsService
 {
+    public static ConcurrentDictionary<string, string> ContactPhotos = new();
+
     public async Task<List<ContactInfo>> GetContacts()
     {
         if (await Permissions.CheckStatusAsync<Permissions.ContactsRead>() != PermissionStatus.Granted)
@@ -19,7 +22,7 @@ public class ContactsService : IContactsService
                 ContactsContract.Contacts.InterfaceConsts.Id,
                 ContactsContract.Contacts.InterfaceConsts.DisplayName,
                 ContactsContract.Contacts.InterfaceConsts.HasPhoneNumber,
-                ContactsContract.Contacts.InterfaceConsts.PhotoUri
+                ContactsContract.Contacts.InterfaceConsts.PhotoThumbnailUri
             },
             null,
             null,
@@ -40,10 +43,13 @@ public class ContactsService : IContactsService
                         DisplayName = contactDetailCursor.GetString(1)
                     };
 
-                    string contactImagePath = contactDetailCursor.GetString(3);
+                    string photoUrl = contactDetailCursor.GetString(3);
 
-                    if (contactImagePath is not null)
-                        contact.Image = $"{contactImagePath.Replace("content://com.android.contacts/display_photo/", string.Empty)}.contact"; // ContactsViewFileProvider
+                    if (photoUrl is not null)
+                    {
+                        ContactPhotos.TryAdd(contact.Id, photoUrl);
+                        contact.Image = $"{contact.Id}.contact"; // ContactsViewFileProvider
+                    }
 
                     contacts.Add(contact);
 
@@ -57,20 +63,5 @@ public class ContactsService : IContactsService
 
             return contacts;
         });
-    }
-
-    async Task<string> ConvertToBase64Image(Stream stream)
-    {
-        byte[] bytes;
-
-        await using (MemoryStream memoryStream = new())
-        {
-            await stream.CopyToAsync(memoryStream);
-            bytes = memoryStream.ToArray();
-        }
-
-        string base64 = Convert.ToBase64String(bytes);
-
-        return $"data:image/jpg;base64, {base64}";
     }
 }
