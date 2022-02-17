@@ -66,6 +66,9 @@
 		<MauiFont Include="Resources\Fonts\*" />
 
 		<LinkDescription Include="Linker.xml" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
 	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
@@ -75,7 +78,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Bit.Client.Web.BlazorUI" Version="8.8.0" />
+		<PackageReference Include="Bit.Client.Web.BlazorUI" Version="8.9.0" />
 		<PackageReference Include="Bit.Tooling.SourceGenerators" Version="7.3.0" />
 		<PackageReference Include="BuildWebCompiler" Version="1.12.405" />
 		<Content Remove="appsettings.json" />
