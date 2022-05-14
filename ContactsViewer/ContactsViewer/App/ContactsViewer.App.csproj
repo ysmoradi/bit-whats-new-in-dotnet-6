@@ -7,7 +7,6 @@
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<EnableDefaultCssItems>false</EnableDefaultCssItems>
-		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
 
 		<!-- Display name -->
 		<ApplicationTitle>ContactsViewer</ApplicationTitle>
@@ -28,11 +27,6 @@
 		<TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</TargetPlatformMinVersion>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
-		<OutputType>WinExe</OutputType>
-		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
-	</PropertyGroup>
-
 	<PropertyGroup Condition="$(TargetFramework.Contains('-android'))">
 		<AndroidLinkMode Condition="'$(Configuration)' == 'Release'">Full</AndroidLinkMode>
 		<RuntimeIdentifiers Condition="'$(Configuration)' == 'Release'">android-arm64</RuntimeIdentifiers>
@@ -42,7 +36,6 @@
 		<Using Include="Microsoft.AspNetCore.Components.WebView.Maui" />
 		<Using Include="Microsoft.Maui" />
 		<Using Include="Microsoft.Maui.Controls.Hosting" />
-		<Using Include="Microsoft.Maui.Essentials" />
 		<Using Include="Microsoft.Maui.Hosting" />
 		<Using Include="Microsoft.AspNetCore.Components" />
 		<Using Include="ContactsViewer.App.Contracts" />
@@ -71,15 +64,9 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
-	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
-		<!-- Required - WinUI does not yet have buildTransitive for everything -->
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
-		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.0.30" />
-	</ItemGroup>
-
 	<ItemGroup>
-		<PackageReference Include="Bit.Client.Web.BlazorUI" Version="8.9.0" />
-		<PackageReference Include="Bit.Tooling.SourceGenerators" Version="7.3.0" />
+		<PackageReference Include="Bit.Client.Web.BlazorUI" Version="9.0.5" />
+		<PackageReference Include="Bit.Tooling.SourceGenerators" Version="9.0.5" />
 		<PackageReference Include="BuildWebCompiler" Version="1.12.405" />
 		<Content Remove="appsettings.json" />
 		<EmbeddedResource Include="appsettings.json" />

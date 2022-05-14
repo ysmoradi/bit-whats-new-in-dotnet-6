@@ -18,13 +18,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Bit.Tooling.SourceGenerators" Version="7.3.0" />
-		<PackageReference Condition=" '$(BlazorMode)' == 'BlazorWebAssembly' " Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0" />
-		<PackageReference Condition=" '$(BlazorMode)' == 'BlazorWebAssembly' " Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0" PrivateAssets="all" />
+		<PackageReference Include="Bit.Tooling.SourceGenerators" Version="9.0.5" />
+		<PackageReference Condition=" '$(BlazorMode)' == 'BlazorWebAssembly' " Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.5" />
+		<PackageReference Condition=" '$(BlazorMode)' == 'BlazorWebAssembly' " Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.5" PrivateAssets="all" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Bit.Client.Web.BlazorUI" Version="8.9.0" />
+		<PackageReference Include="Bit.Client.Web.BlazorUI" Version="9.0.5" />
 		<PackageReference Include="BuildWebCompiler" Version="1.12.405" />
 		<ProjectReference Include="..\Shared\ContactsViewer.Shared.csproj" />
 		

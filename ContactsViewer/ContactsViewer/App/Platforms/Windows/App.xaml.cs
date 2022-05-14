@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Microsoft.Maui.ApplicationModel;
+using Microsoft.UI.Xaml;
 
 namespace ContactsViewer.App.Platforms.Windows;
 

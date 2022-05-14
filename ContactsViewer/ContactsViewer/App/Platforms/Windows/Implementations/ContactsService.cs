@@ -1,4 +1,7 @@
-﻿namespace ContactsViewer.App.Platforms.Windows.Implementations;
+﻿using Microsoft.Maui.ApplicationModel;
+using Microsoft.Maui.ApplicationModel.Communication;
+
+namespace ContactsViewer.App.Platforms.Windows.Implementations;
 
 public class ContactsService : IContactsService
 {
